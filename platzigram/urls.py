@@ -1,12 +1,13 @@
-from django.contrib import admin
+""" Platzigram URLs module. """
 from django.urls import path
-from django.http import HttpResponse
+from platzigram import views
 
-def hello_world(request):
-    return HttpResponse('Hello World !')
+
 
 urlpatterns = [
 
-    path('helloworld/', hello_world)
+    path('helloworld/', views.hello_world),
+    path('sorted/', views.sort_integers),
+    path('hi/<str:name>/<int:age>', views.say_hi)
     #path('admin/', admin.site.urls),
 ]
