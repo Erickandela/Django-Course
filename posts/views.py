@@ -1,32 +1,43 @@
 """ Posts views. """
 
 #Django
-from django.http import HttpResponse
+#from django.http import HttpResponse
+from django.shortcuts import render
 
 
 #Utilities
 from datetime import date, datetime
 
 
-
 posts = [
-    {
-        'name': 'Mont Blac',
-        'user': 'Yessica Cortés',
+    {   
+        'title': 'Mont Blac',
+        'user': {
+            'name': 'Yessica Cortés',
+            'picture': 'https://picsum.photos/60/60/?image=1036'
+        },
+        
         'timestamp': datetime.now().strftime('%b %dth, %y - %H:%M hrs') ,
-        'picture': 'https://picsum.photos/200/200/?image=1036',
+        'photo': 'https://picsum.photos/200/200/?image=1036'
     },
     {
-        'name': 'Via Láctea',
-        'user': 'C Vander',
+        'title': 'Via Láctea',
+        'user':{
+            'name': 'C Vander',
+            'picture': 'https://picsum.photos/60/60/?image=903'
+        },
         'timestamp': datetime.now().strftime('%b %dth, %y - %H:%M hrs') ,
-        'picture': 'https://picsum.photos/200/200/?image=903',
+        'photo': 'https://picsum.photos/200/200/?image=903',
     },
-    {
-        'name': 'Nuevo Auditorio',
-        'user': 'Thepianartist',
+    {   
+        'title': 'Nuevo Auditorio',
+        'user':{
+            'name': 'Thepianartist',
+            'picture': 'https://picsum.photos/60/60/?image=1076'
+        },
+        
         'timestamp': datetime.now().strftime('%b %dth, %y - %H:%M hrs') ,
-        'picture': 'https://picsum.photos/200/200/?image=1076',
+        'photo': 'https://picsum.photos/200/200/?image=1076',
     }
 ]
 
@@ -35,11 +46,4 @@ posts = [
 
 def lists_posts(request):
     """ List existing posts. """
-    content = []
-    for post in posts:
-        content.append(""" 
-            <p><strong> {name} </strong></p>
-            <p><small> {user} - <i>{timestamp}</i> </small></p>
-            <figure><img src="{picture}" /></figure>
-            """.format(**post))
-    return HttpResponse('<br>'.join(content))
+    return render (request, 'feed.html', {'posts': posts })
