@@ -2,6 +2,7 @@
 
 #Django
 #from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 
@@ -43,7 +44,7 @@ posts = [
 
 # Create your views here.
 
-
+@login_required
 def lists_posts(request):
     """ List existing posts. """
     return render (request, 'posts/feed.html', {'posts': posts })
