@@ -6,11 +6,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
+#Exception
+from django.db.utils import IntegrityError
+
 #Models
 from django.contrib.auth.models import User
 
-#Exception
-from django.db.utils import IntegrityError
+
+def update_profile(request):
+    """ Update a user's profile view. """
+    return render(request, 'users/update_profile.html')
+
 
 def login_view(request):
     """ Login view. """
