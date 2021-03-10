@@ -8,6 +8,8 @@ from posts import views
 
 
 urlpatterns = [
+    #Magnament
+
     path(
         route = '',
         view = views.PostsFeedView.as_view(), 
@@ -18,4 +20,12 @@ urlpatterns = [
         view=views.create_post, 
         name='create'
         ),
+
+    #Posts
+    path(
+        route = 'posts/<int:post_id>',
+        view=views.PostDetailView.as_view(),
+        name = 'post_detail'
+    )
+
 ]
