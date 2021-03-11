@@ -6,10 +6,8 @@ from django.urls import path
 #Views
 from posts import views
 
-
 urlpatterns = [
     #Magnament
-
     path(
         route = '',
         view = views.PostsFeedView.as_view(), 
@@ -17,13 +15,13 @@ urlpatterns = [
         ),
     path(
         route ='posts/new', 
-        view=views.create_post, 
+        view=views.CreatePostView.as_view(), 
         name='create'
         ),
 
     #Posts
     path(
-        route = 'posts/<int:post_id>',
+        route = 'posts/<int:pk>',
         view=views.PostDetailView.as_view(),
         name = 'post_detail'
     )

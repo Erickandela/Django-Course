@@ -46,7 +46,7 @@ class SignupForm(forms.Form):
             label=False,
             min_length=2,
             max_length=50,
-            widget=forms.PasswordInput(
+            widget=forms.TextInput(
                 attrs={
                     'placeholder': 'First name',
                     'class': 'form-control',
@@ -57,7 +57,7 @@ class SignupForm(forms.Form):
             label=False,
             min_length=2,
             max_length=50,
-            widget=forms.PasswordInput(
+            widget=forms.TextInput(
                 attrs={
                     'placeholder': 'Last name',
                     'class': 'form-control',
